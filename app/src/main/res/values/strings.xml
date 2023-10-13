@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">UTS_android</string>
+    <array name="title">
+        <item>Ballerina</item>
+        <item>Doraemon Stand By Me</item>
+        <item>The NUN 2</item>
+        <item>One Piece Gold</item>
+        <item>One Piece Z</item>
+    </array>
+    <array name="description">
+        <item>Berduka karena kematian sahabat yang gagal ia lindungi, mantan pengawal pribadi ini,
+            Ok-ju, bertekad memenuhi harapan terakhir sang sahabat: balas dendam yang memuaskan.
+        </item>
+        <item>Berduka karena kematian sahabat yang gagal ia lindungi, mantan pengawal pribadi ini,
+            Ok-ju, bertekad memenuhi harapan terakhir sang sahabat: balas dendam yang memuaskan.
+        </item>
+        <item>Berduka karena kematian sahabat yang gagal ia lindungi, mantan pengawal pribadi ini,
+            Ok-ju, bertekad memenuhi harapan terakhir sang sahabat: balas dendam yang memuaskan.
+        </item>
+        <item>Berduka karena kematian sahabat yang gagal ia lindungi, mantan pengawal pribadi ini,
+            Ok-ju, bertekad memenuhi harapan terakhir sang sahabat: balas dendam yang memuaskan.
+        </item>
+        <item>Berduka karena kematian sahabat yang gagal ia lindungi, mantan pengawal pribadi ini,
+            Ok-ju, bertekad memenuhi harapan terakhir sang sahabat: balas dendam yang memuaskan.
+        </item>
+    </array>
+    <array name="movie_1">
+        <item>horror</item>
+        <item>supernatural</item>
+    </array>
+    <array name="movie_2">
+        <item>horror</item>
+        <item>supernatural</item>
+    </array>
+    <array name="movie_3">
+        <item>horror</item>
+        <item>supernatural</item>
+    </array>
+    <array name="movie_4">
+        <item>horror</item>
+        <item>supernatural</item>
+    </array>
+    <array name="movie_5">
+        <item>horror</item>
+        <item>supernatural</item>
+    </array>
+    <array name="genres">
+        <item>@array/movie_1</item>
+        <item>@array/movie_2</item>
+        <item>@array/movie_3</item>
+        <item>@array/movie_4</item>
+        <item>@array/movie_5</item>
+    </array>
+</resources>
