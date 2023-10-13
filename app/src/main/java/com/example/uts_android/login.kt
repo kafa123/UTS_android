@@ -22,7 +22,10 @@ class login : AppCompatActivity() {
                 val intent= Intent(this@login,MainActivity::class.java)
                 intent.putExtra(EXTRA_USERNAME,textUsername.text.toString())
                 startActivity(intent)
+
+                finish()
             }
+
         }
     }
 }

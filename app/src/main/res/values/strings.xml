@@ -24,31 +24,12 @@
             Ok-ju, bertekad memenuhi harapan terakhir sang sahabat: balas dendam yang memuaskan.
         </item>
     </array>
-    <array name="movie_1">
-        <item>horror</item>
-        <item>supernatural</item>
-    </array>
-    <array name="movie_2">
-        <item>horror</item>
-        <item>supernatural</item>
-    </array>
-    <array name="movie_3">
-        <item>horror</item>
-        <item>supernatural</item>
-    </array>
-    <array name="movie_4">
-        <item>horror</item>
-        <item>supernatural</item>
-    </array>
-    <array name="movie_5">
-        <item>horror</item>
-        <item>supernatural</item>
-    </array>
-    <array name="genres">
-        <item>@array/movie_1</item>
-        <item>@array/movie_2</item>
-        <item>@array/movie_3</item>
-        <item>@array/movie_4</item>
-        <item>@array/movie_5</item>
+
+    <array name="Director">
+        <item>Chung-Hyun Lee</item>
+        <item>Chung-Hyun Lee</item>
+        <item>Chung-Hyun Lee</item>
+        <item>Chung-Hyun Lee</item>
+        <item>Chung-Hyun Lee</item>
     </array>
 </resources>

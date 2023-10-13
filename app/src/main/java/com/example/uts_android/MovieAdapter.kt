@@ -29,12 +29,15 @@ class MovieAdapter (private var MovieList:ArrayList<movies>): RecyclerView.Adapt
 
         Glide.with(holder.itemView.context).load(currentMovie.imageMovie).centerCrop().into(holder.imageMovie)
 
-        holder.imageMovie.setOnClickListener {
+        holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context,DetailMovies::class.java)
+
             intent.putExtra("Title",currentMovie.title)
             intent.putExtra("Description",currentMovie.description)
             intent.putExtra("Image_Movie",currentMovie.imageMovie)
+            intent.putStringArrayListExtra("Genres",currentMovie.genres)
+            intent.putExtra("Director",currentMovie.director)
             context.startActivity(intent)
         }
     }
