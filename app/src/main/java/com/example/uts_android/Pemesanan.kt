@@ -12,6 +12,7 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TimePicker
 import com.example.uts_android.databinding.ActivityPemesananBinding
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -57,7 +58,6 @@ class Pemesanan : AppCompatActivity() {
             "Bayar di tempat",
             "Menggunakan Bank"
         )
-
 
         with(binding){
             val myCalendar = Calendar.getInstance()
@@ -110,12 +110,14 @@ class Pemesanan : AppCompatActivity() {
                     id: Long
                 ) {
                     val paymentMethod = spinnerMethod.selectedItem.toString()
-                    if (paymentMethod == "Bayar di tempat") {
-                        spinnerMethodDetail.visibility = View.INVISIBLE
-                        layoutAccount.visibility = View.INVISIBLE
-                    } else {
+                    if (paymentMethod == "Menggunakan Bank") {
                         spinnerMethodDetail.visibility = View.VISIBLE
                         layoutAccount.visibility = View.VISIBLE
+                        val bank=spinnerMethodDetail.selectedItem.toString()
+
+                    } else {
+                        spinnerMethodDetail.visibility = View.INVISIBLE
+                        layoutAccount.visibility = View.INVISIBLE
                     }
                 }
 
@@ -138,9 +140,10 @@ class Pemesanan : AppCompatActivity() {
                     if (numberOfSeatsText.isNotEmpty()) {
                         val numberOfSeats = numberOfSeatsText.toInt()
                         TotalPayment = fee * numberOfSeats
+                        val formatTotal = formatCurrency(TotalPayment)
                         tvJumlahKursi.text = " X "+numberOfSeats.toString()
-                        seatCost.text = fee.toString()
-                        totalPayment.text = TotalPayment.toString()
+                        seatCost.text = formatCurrency(fee)
+                        totalPayment.text = formatTotal
                     }
                 }
 
@@ -182,7 +185,7 @@ class Pemesanan : AppCompatActivity() {
                 intent.putExtra(EXTRA_TIME,TimePicker.text.toString())
                 intent.putExtra(EXTRA_FEE,seatCost.text)
                 intent.putExtra(EXTRA_TOTAL_PAYMENT,totalPayment.text)
-                intent.putExtra(EXTRA_NUMBER_OF_SEAT,numberOfSeat.text)
+                intent.putExtra(EXTRA_NUMBER_OF_SEAT,numberOfSeat.text.toString())
                 intent.putExtra(EXTRA_SEAT,spinnerSeat.selectedItem.toString())
                 intent.putExtra(EXTRA_METHOD,spinnerMethod.selectedItem.toString())
                 startActivity(intent)
@@ -199,5 +202,10 @@ class Pemesanan : AppCompatActivity() {
         val sdf= SimpleDateFormat(myFormat, Locale.UK)
         timePicker.setText(sdf.format(myCalendar.time))
     }
+    private fun formatCurrency(value: Int): String {
+        val formatter = NumberFormat.getCurrencyInstance(Locale("in","ID"))
+        return formatter.format(value).replace("IDR","Rp.")
+    }
+
 }
 

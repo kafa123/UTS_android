@@ -42,9 +42,7 @@ class DetailMovies : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-
         }
-
     }
     private fun getGenreList(){
         for (i in genreArray.indices){

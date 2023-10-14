@@ -6,6 +6,8 @@
     android:backgroundTint="@color/secondary"
     android:textColor="@color/white"
     android:textSize="12sp"
+    android:textAlignment="center"
+    android:layout_marginHorizontal="8dp"
     android:id="@+id/tv_genre"
     android:fontFamily="@font/poppins_regular">
 </TextView>

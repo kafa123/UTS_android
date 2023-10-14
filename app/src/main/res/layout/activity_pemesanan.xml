@@ -88,7 +88,6 @@
                 app:layout_constraintTop_toBottomOf="@id/spinner_seat"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="8dp"
-
                 android:id="@+id/layout_number_of_seat"
                 >
                 <com.google.android.material.textfield.TextInputEditText
@@ -96,7 +95,6 @@
                     android:layout_height="match_parent"
                     android:id="@+id/number_of_seat"
                     android:background="@drawable/corner"
-                    android:editable="true"
                     android:inputType="number"
                     />
             </com.google.android.material.textfield.TextInputLayout>
@@ -123,7 +121,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Waktu"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 app:layout_constraintTop_toBottomOf="@id/layout_Date_Picker"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="12dp"
@@ -133,6 +130,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
                     android:id="@+id/TimePicker"
                     android:clickable="true"
                     android:inputType="number"/>
@@ -230,7 +228,7 @@
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:hint="account number"
                 android:id="@+id/layout_account"
                 app:layout_constraintStart_toStartOf="@id/guidlineVertical"
@@ -254,7 +252,7 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/corner"
                 android:backgroundTint="@color/secondary"
-                app:layout_constraintTop_toBottomOf="@id/spinner_method_detail"/>
+                app:layout_constraintTop_toBottomOf="@id/layout_account"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

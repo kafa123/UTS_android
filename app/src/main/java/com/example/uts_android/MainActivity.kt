@@ -42,25 +42,24 @@ class MainActivity : AppCompatActivity() {
             "Horror"
         )
 
-//        MovieGenre= arrayOf(
-//            arrayOf(genres[0],genres[4]),
-//            arrayOf(genres[2],genres[5],genres[3]),
-//            arrayOf(genres[7],genres[6],genres[4]),
-//            arrayOf(genres[0],genres[1]),
-//            arrayOf(genres[0],genres[1]),
-//        )
         MovieGenre= arrayOf(
-            arrayListOf("action","Thriller"),
-            arrayListOf("action","Thriller"),
-            arrayListOf("action","Thriller"),
-            arrayListOf("action","Thriller"),
-            arrayListOf("action","Thriller"),
+            arrayListOf(genres[0],genres[4]),
+            arrayListOf(genres[2],genres[5],genres[3]),
+            arrayListOf(genres[7],genres[6],genres[4]),
+            arrayListOf(genres[0],genres[1]),
+            arrayListOf(genres[0],genres[1]),
         )
+//        MovieGenre= arrayOf(
+//            arrayListOf("action","Thriller"),
+//            arrayListOf("action","Thriller"),
+//            arrayListOf("action","Thriller"),
+//            arrayListOf("action","Thriller"),
+//            arrayListOf("action","Thriller"),
+//        )
 
         title=resources.getStringArray(R.array.title)
         description=resources.getStringArray(R.array.description)
         Director=resources.getStringArray(R.array.Director)
-
 
         MovieRecyclerView=findViewById(R.id.top_movies_recyclerView)
 

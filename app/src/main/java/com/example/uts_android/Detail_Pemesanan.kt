@@ -2,6 +2,7 @@ package com.example.uts_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.uts_android.databinding.ActivityDetailPemesananBinding
 import java.sql.Time
 
@@ -32,7 +33,7 @@ class Detail_Pemesanan : AppCompatActivity() {
             numberOfSeat.text=NumberOfSeat
             totalPayment.text=TotalPayment
             paymentMethod.text=PaymentMethod
-            imageMovie.setImageResource(image)
+            Glide.with(this@Detail_Pemesanan).load(image).into(imageMovie)
         }
     }
 }

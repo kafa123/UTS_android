@@ -19,8 +19,6 @@ class login : AppCompatActivity() {
 
         with(viewBinding){
 
-
-
             viewBinding.btnLogin.setOnClickListener {
                 val isAuth = authenticate(textUsername.toString(),textPassword.toString())
 
@@ -33,11 +31,9 @@ class login : AppCompatActivity() {
                     viewBinding.layoutPassword.error="invalid username or password"
                 }
             }
-
         }
     }
     private fun authenticate(username: String, password: String): Boolean {
-//        return username=="Kafabih" && password=="Gantenk"
-        return true
+        return username=="Kafabih" && password=="Gantenk"
 }
 }
