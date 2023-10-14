@@ -32,4 +32,29 @@
         <item>Chung-Hyun Lee</item>
         <item>Chung-Hyun Lee</item>
     </array>
+
+    <array name="Bioskop">
+        <item>XXI Jogja City Mall</item>
+        <item>Empire XXI </item>
+        <item>XXI Plaza Ambarukmo</item>
+        <item>CGV Pakuwon Mall</item>
+        <item>Cinepolis Lippo Plaza</item>
+        <item>Sleman City Hall XXI</item>
+        <item>CGV Jwalk Mall</item>
+    </array>
+
+    <array name="Jenis_Seat">
+        <item>Reguler</item>
+        <item>Premium</item>
+        <item>VIP</item>
+        <item>VVIP</item>
+    </array>
+
+    <array name="Bank">
+        <item>BCA</item>
+        <item>BNI</item>
+        <item>BRI</item>
+        <item>MANDIRI</item>
+        <item>JAGO</item>
+    </array>
 </resources>

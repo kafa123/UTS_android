@@ -9,117 +9,129 @@
     android:padding="16dp"
     tools:context=".DetailMovies">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Details Movie"
-        android:textSize="24sp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/poppins_regular"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:id="@+id/title_detail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-    <androidx.cardview.widget.CardView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:layout_constraintTop_toBottomOf="@id/title_detail"
-        app:cardCornerRadius="10dp"
-        android:layout_margin="12dp"
-        android:id="@+id/image_detail_movie_layout"
-        >
-        <ImageView
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/image_detail_movie"
-            android:scaleType="centerCrop"/>
-    </androidx.cardview.widget.CardView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The Nun"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/image_detail_movie_layout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/title_movie"
-        android:fontFamily="@font/poppins_regular"
-        android:layout_margin="12dp"/>
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details Movie"
+                android:textSize="24sp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:id="@+id/title_detail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:layout_constraintTop_toBottomOf="@id/title_detail"
+            app:cardCornerRadius="10dp"
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/director"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/recycler_genres"
-        android:layout_margin="12dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/director"
-        app:layout_constraintTop_toBottomOf="@+id/title_movie"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="director"
-        android:layout_marginHorizontal="12dp"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:fontFamily="@font/poppins_regular"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DESCRIPTION MOVIE"
-        android:id="@+id/title_desc_movie"
-        android:textColor="@color/white"
-        android:fontFamily="@font/poppins_regular"
-        app:layout_constraintTop_toBottomOf="@id/recycler_genres"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="8dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:orientation="horizontal"
-        android:id="@+id/linearDescMovie"
-        app:layout_constraintTop_toBottomOf="@id/title_desc_movie"
-        app:layout_constraintStart_toStartOf="parent">
+            android:id="@+id/image_detail_movie_layout"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/image_detail_movie"
+                android:scaleType="matrix"
+                android:src="@drawable/one_piece_z"/>
+        </androidx.cardview.widget.CardView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="deskripsi"
-            android:id="@+id/deskripsi_movie"
-            app:layout_constraintTop_toBottomOf="@id/title_desc_movie"
+            android:text="The Nun"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/image_detail_movie_layout"
             app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/title_movie"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_margin="12dp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/director"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/recycler_genres"
+            android:layout_margin="12dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/director"
+            app:layout_constraintTop_toBottomOf="@+id/title_movie"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="director"
+            android:layout_marginHorizontal="12dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DESCRIPTION MOVIE"
+            android:id="@+id/title_desc_movie"
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_regular"
-            android:maxLines="3"
-            />
-        <TextView
-            android:layout_width="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/recycler_genres"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="  read more"
-            android:clickable="true"
-            android:textColor="@color/primary"
-            android:id="@+id/btnReadMore"
-            />
-    </LinearLayout>
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pesan sekarang"
-        app:layout_constraintTop_toBottomOf="@id/linearDescMovie"
-        android:background="@drawable/corner"
-        android:backgroundTint="@color/third"
-        android:elevation="5dp"
-        android:textColor="@color/white"/>
+            android:padding="12dp"
+            android:orientation="horizontal"
+            android:id="@+id/linearDescMovie"
+            app:layout_constraintTop_toBottomOf="@id/title_desc_movie"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="deskripsi"
+                android:id="@+id/deskripsi_movie"
+                app:layout_constraintTop_toBottomOf="@id/title_desc_movie"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:maxLines="3"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  read more"
+                android:clickable="true"
+                android:textColor="@color/primary"
+                android:id="@+id/btnReadMore"
+                />
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pesan sekarang"
+            android:id="@+id/btnPesanSekarang"
+            app:layout_constraintTop_toBottomOf="@id/linearDescMovie"
+            android:background="@drawable/corner"
+            android:backgroundTint="@color/third"
+            android:elevation="5dp"
+            android:textColor="@color/white"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

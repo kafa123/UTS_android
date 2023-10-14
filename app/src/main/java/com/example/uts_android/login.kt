@@ -18,14 +18,27 @@ class login : AppCompatActivity() {
 
 
         with(viewBinding){
+
+
+
             viewBinding.btnLogin.setOnClickListener {
-                val intent= Intent(this@login,MainActivity::class.java)
-                intent.putExtra(EXTRA_USERNAME,textUsername.text.toString())
-                startActivity(intent)
+                val isAuth = authenticate(textUsername.toString(),textPassword.toString())
+
+                if (isAuth){
+                    val intent = Intent(this@login,MainActivity::class.java)
+                    intent.putExtra(EXTRA_USERNAME,textUsername.toString())
+                    startActivity(intent)
+                }
+                else{
+                    viewBinding.layoutPassword.error="invalid username or password"
+                }
 
                 finish()
             }
 
         }
     }
+    private fun authenticate(username: String, password: String): Boolean {
+        return username=="Kafabih" && password=="22/504682/SV/21682"
+}
 }
