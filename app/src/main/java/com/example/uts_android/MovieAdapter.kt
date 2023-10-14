@@ -32,7 +32,6 @@ class MovieAdapter (private var MovieList:ArrayList<movies>): RecyclerView.Adapt
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context,DetailMovies::class.java)
-
             intent.putExtra("Title",currentMovie.title)
             intent.putExtra("Description",currentMovie.description)
             intent.putExtra("Image_Movie",currentMovie.imageMovie)

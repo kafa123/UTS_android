@@ -13,6 +13,7 @@ class Detail_Pemesanan : AppCompatActivity() {
         setContentView(binding.root)
 
         val title=intent.getStringExtra("Title")
+        val image=intent.getIntExtra("Image",0)
         val Date=intent.getStringExtra(Pemesanan.EXTRA_DATE)
         val Time=intent.getStringExtra(Pemesanan.EXTRA_TIME)
         val Seat=intent.getStringExtra(Pemesanan.EXTRA_SEAT)
@@ -28,9 +29,10 @@ class Detail_Pemesanan : AppCompatActivity() {
             dateMovie.text=Date+" "+Time
             seat.text=Seat
             payment.text=Fee
-            tvNumberOfSeat.text=NumberOfSeat
+            numberOfSeat.text=NumberOfSeat
             totalPayment.text=TotalPayment
             paymentMethod.text=PaymentMethod
+            imageMovie.setImageResource(image)
         }
     }
 }

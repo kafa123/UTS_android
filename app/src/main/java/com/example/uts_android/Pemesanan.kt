@@ -123,35 +123,60 @@ class Pemesanan : AppCompatActivity() {
                     // Do nothing
                 }
             }
+            spinnerSeat.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    val fee = when (spinnerSeat.selectedItem.toString()) {
+                        "Reguler" -> 35000
+                        "Premium" -> 50000
+                        "VIP" -> 75000
+                        "VVIP" -> 100000
+                        else -> 0
+                    }
 
+                    val numberOfSeatsText = numberOfSeat.text.toString()
+
+                    if (numberOfSeatsText.isNotEmpty()) {
+                        val numberOfSeats = numberOfSeatsText.toInt()
+                        TotalPayment = fee * numberOfSeats
+                        tvJumlahKursi.text = " X "+numberOfSeats.toString()
+                        seatCost.text = fee.toString()
+                        totalPayment.text = TotalPayment.toString()
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // Handle case where no seat is selected (if necessary)
+                }
+            }
 
 
 //            menjalankan fungsi untuk menghitung harga
 //            Payment(spinnerSeat.selectedItem.toString(),numberOfSeat.text.toString().toInt())
 
-            val fee = when (spinnerSeat.selectedItem.toString()) {
-                "Reguler" -> 35000
-                "Premium" -> 50000
-                "VIP" -> 75000
-                "VVIP"->100000
-                else -> {
-                    0
-                }
-            }
-
-            TotalPayment=if (numberOfSeat.text.toString().isNotEmpty()){
-                fee*numberOfSeat.text.toString().toInt()
-            }else{
-                fee
-            }
-
-            seatCost.text=fee.toString()
-            tvJumlahKursi.text=numberOfSeat.editableText
-            totalPayment.text=TotalPayment.toString()
+//            val fee = when (spinnerSeat.selectedItem.toString()) {
+//                "Reguler" -> 35000
+//                "Premium" -> 50000
+//                "VIP" -> 75000
+//                "VVIP"->100000
+//                else -> {
+//                    0
+//                }
+//            }
+//
+//            TotalPayment=if (numberOfSeat.text.toString().isNotEmpty()){
+//                fee*numberOfSeat.text.toString().toInt()
+//            }else{
+//                fee
+//            }
+//
+//            seatCost.text=fee.toString()
+//            tvJumlahKursi.text=numberOfSeat.editableText
+//            totalPayment.text=TotalPayment.toString()
 
             btnPemesanan.setOnClickListener {
                 val intent= Intent(this@Pemesanan,Detail_Pemesanan::class.java)
                 intent.putExtra("Title",title)
+                intent.putExtra("Image",image)
                 intent.putExtra(EXTRA_BIOSKOP,spinnerBioskop.selectedItem.toString())
                 intent.putExtra(EXTRA_DATE,DatePicker.text.toString())
                 intent.putExtra(EXTRA_TIME,TimePicker.text.toString())

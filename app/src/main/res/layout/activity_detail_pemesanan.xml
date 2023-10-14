@@ -11,8 +11,13 @@
     
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
+        android:textAlignment="center"
         android:text="Order Summary"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_regular"
+        android:textStyle="bold"
+        android:background="@drawable/paint_1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,13 +29,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"
+        app:layout_constraintGuide_percent="0.075"
         android:id="@+id/guidline1"/>
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9"
+        app:layout_constraintGuide_percent="0.975"
         android:id="@+id/guidline2"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout

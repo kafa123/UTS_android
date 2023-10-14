@@ -32,13 +32,12 @@ class login : AppCompatActivity() {
                 else{
                     viewBinding.layoutPassword.error="invalid username or password"
                 }
-
-                finish()
             }
 
         }
     }
     private fun authenticate(username: String, password: String): Boolean {
-        return username=="Kafabih" && password=="22/504682/SV/21682"
+//        return username=="Kafabih" && password=="Gantenk"
+        return true
 }
 }
