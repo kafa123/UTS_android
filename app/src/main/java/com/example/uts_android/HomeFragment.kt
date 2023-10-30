@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
         val view = binding.root
         dataMovieList = arrayListOf<DataMovie>()
 //        fetchMovies()
-
+        
 
         with(binding) {
 
@@ -95,16 +95,13 @@ class HomeFragment : Fragment() {
                                 MovieRecyclerView=topMoviesRecyclerView
                                 val adapter=MovieAdapter(dataMovieList)
                                 MovieRecyclerView.adapter=adapter
-
                             }
                         } else {
                         }
                     }
-
                     override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                         TODO("Not yet implemented")
                     }
-
                 })
 
         }

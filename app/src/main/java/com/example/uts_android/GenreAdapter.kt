@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uts_android.model.Genre
 
-class GenreAdapter(private val genreList:ArrayList<Genre>):RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
+class GenreAdapter(private val genreList:ArrayList<String>):RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
     inner class ViewHolder(genreView: View):RecyclerView.ViewHolder(genreView){
         val genreTextView:TextView=genreView.findViewById(R.id.tv_genre)
     }
@@ -19,6 +19,6 @@ class GenreAdapter(private val genreList:ArrayList<Genre>):RecyclerView.Adapter<
 
     override fun getItemCount() = genreList.size
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.genreTextView.text= genreList[position].name
+        holder.genreTextView.text= genreList.get(position).toString()
     }
 }

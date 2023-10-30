@@ -107,13 +107,14 @@
                 app:layout_constraintTop_toBottomOf="@id/layout_number_of_seat"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/corner"
+
                 android:id="@+id/layout_Date_Picker"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/DatePicker"
+                    android:background="@drawable/corner"
                     android:clickable="true"
                     android:inputType="date"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -124,13 +125,13 @@
                 app:layout_constraintTop_toBottomOf="@id/layout_Date_Picker"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/corner"
+
                 android:id="@+id/layout_TimePicker"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
+                    android:background="@drawable/corner"
                     android:id="@+id/TimePicker"
                     android:clickable="true"
                     android:inputType="number"/>

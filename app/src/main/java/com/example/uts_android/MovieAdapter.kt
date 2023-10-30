@@ -36,7 +36,7 @@ class MovieAdapter (private var dataMovieList:ArrayList<DataMovie>): RecyclerVie
             intent.putExtra("Title",currentMovie.title)
             intent.putExtra("Description",currentMovie.overview)
             intent.putExtra("Image_Movie",currentMovie.posterPath)
-            intent.putExtra("Genres",currentMovie.genreIds)
+            intent.putIntegerArrayListExtra("Genres",currentMovie.genreIds)
             context.startActivity(intent)
         }
     }
