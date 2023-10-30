@@ -34,6 +34,7 @@ class login : AppCompatActivity() {
         }
     }
     private fun authenticate(username: String, password: String): Boolean {
-        return username=="Kafabih" && password=="Gantenk"
+//        return username=="Kafabih" && password=="Gantenk"
+        return true
 }
 }

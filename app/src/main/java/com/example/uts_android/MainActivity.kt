@@ -1,86 +1,48 @@
 package com.example.uts_android
 
-import android.media.tv.TvContract.Programs.Genres
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import retrofit2.Callback
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uts_android.databinding.ActivityMainBinding
+import com.example.uts_android.model.Genre
+import com.example.uts_android.model.GenreResponse
+import com.example.uts_android.model.DataMovie
+import com.example.uts_android.model.MovieResponse
+import com.example.uts_android.service.GenreApiInterface
+import com.example.uts_android.service.MovieApiInterface
+import com.example.uts_android.service.MovieApiService
+import retrofit2.Call
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+private lateinit var Binding: ActivityMainBinding
 
-    private lateinit var MovieRecyclerView: RecyclerView
-    private lateinit var MovieList: ArrayList<movies>
-    lateinit var imageId:Array<Int>
-    lateinit var title:Array<String>
-    lateinit var description:Array<String>
-    lateinit var Director : Array<String>
-    lateinit var genres : List<String>
-    lateinit var MovieGenre : Array<ArrayList<String>>
-
-    private lateinit var Binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(Binding.root)
 
-        imageId= arrayOf(
-            R.drawable.ballerina_1,
-            R.drawable.doraemon_stand,
-            R.drawable.nun_2,
-            R.drawable.one_piece,
-            R.drawable.one_piece_z,
-        )
-        genres= listOf<String>(
-            "Action",
-            "Adventure",
-            "Slice Of Life",
-            "Sci-Fi",
-            "Thriller",
-            "Romance",
-            "Supranatural",
-            "Horror"
-        )
 
-        MovieGenre= arrayOf(
-            arrayListOf(genres[0],genres[4]),
-            arrayListOf(genres[2],genres[5],genres[3]),
-            arrayListOf(genres[7],genres[6],genres[4]),
-            arrayListOf(genres[0],genres[1]),
-            arrayListOf(genres[0],genres[1]),
-        )
-//        MovieGenre= arrayOf(
-//            arrayListOf("action","Thriller"),
-//            arrayListOf("action","Thriller"),
-//            arrayListOf("action","Thriller"),
-//            arrayListOf("action","Thriller"),
-//            arrayListOf("action","Thriller"),
-//        )
-
-        title=resources.getStringArray(R.array.title)
-        description=resources.getStringArray(R.array.description)
-        Director=resources.getStringArray(R.array.Director)
-
-        MovieRecyclerView=findViewById(R.id.top_movies_recyclerView)
-
-        MovieList= arrayListOf<movies>()
-        getUserData()
 
 
         with(Binding){
-
+            ReplaceFragment(HomeFragment())
+            navbar.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.nav_home -> ReplaceFragment(HomeFragment())
+                    R.id.Profile -> ReplaceFragment(ProfileFragment())
+                    else->{}
+                }
+                true
+            }
         }
     }
-    private fun getUserData(){
-        for (i in imageId.indices){
-
-            val movies = movies(imageId[i],title[i],description[i] , MovieGenre[i],Director[i])
-            MovieList.add(movies)
-        }
-
-        val adapter=MovieAdapter(MovieList)
-        MovieRecyclerView.adapter= adapter
+    private fun ReplaceFragment(Fragment:Fragment){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.Frame_layout,Fragment)
+        transaction.commit()
     }
-
-
 }

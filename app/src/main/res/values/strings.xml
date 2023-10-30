@@ -12,15 +12,28 @@
             Ok-ju, bertekad memenuhi harapan terakhir sang sahabat: balas dendam yang memuaskan.
         </item>
         <item>
-            Nobita - mengikuti petualangan sebelumnya - telah berhasil mengubah masa depannya menjadi lebih baik, membuat Shizuka menikah dengannya. Berputus asa, bagaimanapun, ia memutuskan kembali ke masa lalu untuk bertemu kembali dengan nenek tercinta, yang meninggal ketika ia masih TK dan yang benar-benar ia cintai
+            Nobita - mengikuti petualangan sebelumnya - telah berhasil mengubah masa depannya
+            menjadi lebih baik, membuat Shizuka menikah dengannya. Berputus asa, bagaimanapun, ia
+            memutuskan kembali ke masa lalu untuk bertemu kembali dengan nenek tercinta, yang
+            meninggal ketika ia masih TK dan yang benar-benar ia cintai
         </item>
         <item>
-            Pada tahun 1956, setelah kejadian-kejadian di Biara Santa Cartha, Suster Irene sekarang melayani biara di Prancis. Maurice bekerja di sebuah sekolah asrama, di mana dia berteman dengan seorang siswa muda Irlandia bernama Sophie dan guru serta ibunya, Kate. Irene dikirim oleh Kardinal untuk menyelidiki serangkaian kematian di seluruh Eropa, yang dikaitkan dengan setan Valak, dKarena pengalamannya sebelumnya dengan iblis.
+            Pada tahun 1956, setelah kejadian-kejadian di Biara Santa Cartha, Suster Irene sekarang
+            melayani biara di Prancis. Maurice bekerja di sebuah sekolah asrama, di mana dia
+            berteman dengan seorang siswa muda Irlandia bernama Sophie dan guru serta ibunya, Kate.
+            Irene dikirim oleh Kardinal untuk menyelidiki serangkaian kematian di seluruh Eropa,
+            yang dikaitkan dengan setan Valak, dKarena pengalamannya sebelumnya dengan iblis.
         </item>
         <item>
-            Berlatar di Gran Tesoro, sebuah negeri mandiri yang diberi hak oleh Pemerintah Dunia, rumah bagi kota hiburan terbaik di dunia dimana bajak laut terkenal, Marinir, dan miliuner dari seluruh dunia berkumpul di "tempat perlindungan absolut" yang bahkan tidak bisa disentuh Pemerintah Dunia.
+            Berlatar di Gran Tesoro, sebuah negeri mandiri yang diberi hak oleh Pemerintah Dunia,
+            rumah bagi kota hiburan terbaik di dunia dimana bajak laut terkenal, Marinir, dan
+            miliuner dari seluruh dunia berkumpul di "tempat perlindungan absolut" yang bahkan tidak
+            bisa disentuh Pemerintah Dunia.
 
-            Disana, Bajak Laut Topi Jerami bertemu dengan penguasa negeri, ksatria emas, Gildo Tesoro, yang dengan mudah memenangkan hati bajak laut, Marinir, dan bahkan Pemerintah Dunia dengan uang. Dia akan bertindak untuk memuaskan ambisinya yang akan berujung pada perubahan besar kekuatan dunia di Dunia Baru.
+            Disana, Bajak Laut Topi Jerami bertemu dengan penguasa negeri, ksatria emas, Gildo
+            Tesoro, yang dengan mudah memenangkan hati bajak laut, Marinir, dan bahkan Pemerintah
+            Dunia dengan uang. Dia akan bertindak untuk memuaskan ambisinya yang akan berujung pada
+            perubahan besar kekuatan dunia di Dunia Baru.
         </item>
         <item>Berduka karena kematian sahabat yang gagal ia lindungi, mantan pengawal pribadi ini,
             Ok-ju, bertekad memenuhi harapan terakhir sang sahabat: balas dendam yang memuaskan.
@@ -37,7 +50,7 @@
 
     <array name="Bioskop">
         <item>XXI Jogja City Mall</item>
-        <item>Empire XXI </item>
+        <item>Empire XXI</item>
         <item>XXI Plaza Ambarukmo</item>
         <item>CGV Pakuwon Mall</item>
         <item>Cinepolis Lippo Plaza</item>
@@ -59,4 +72,6 @@
         <item>MANDIRI</item>
         <item>JAGO</item>
     </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
