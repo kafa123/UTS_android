@@ -1,5 +1,6 @@
 package com.example.uts_android
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -93,7 +94,14 @@ class HomeFragment : Fragment() {
                                     dataMovieList.add(newDataMovie)
                                 }
                                 MovieRecyclerView=topMoviesRecyclerView
-                                val adapter=MovieAdapter(dataMovieList)
+                                val adapter=MovieAdapter(dataMovieList){dataMovie ->  
+                                    val intent= Intent(context,DetailMovies::class.java)
+                                    intent.putExtra("Title",dataMovie.title)
+                                    intent.putExtra("Description",dataMovie.overview)
+                                    intent.putExtra("Image_Movie",dataMovie.posterPath)
+                                    intent.putIntegerArrayListExtra("Genres",dataMovie.genreIds)
+                                    startActivity(intent)
+                                }
                                 MovieRecyclerView.adapter=adapter
                             }
                         } else {
@@ -129,50 +137,4 @@ class HomeFragment : Fragment() {
             }
     }
 
-//    fun fetchMovies() {
-//        val movieApiService = MovieApiService().getInstance()
-//        val call = movieApiService.create(MovieApiInterface::class.java).getMovieLit()
-//
-//        call.enqueue(object : Callback<MovieResponse> {
-//            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-//                if (response.isSuccessful) {
-//                    val movieResponse = response.body()
-//                    val movies = movieResponse?.results
-//
-//                    if (movies != null) {
-//                        for (movie in movies) {
-//
-//                            val newDataMovie = DataMovie(
-//                                movie.adult,
-//                                movie.backdropPath,
-//                                movie.genreIds,
-//                                movie.id,
-//                                movie.originalLanguage,
-//                                movie.originalTitle,
-//                                movie.overview,
-//                                movie.popularity,
-//                                movie.posterPath,
-//                                movie.releaseDate,
-//                                movie.title,
-//                                movie.video,
-//                                movie.voteAverage,
-//                                movie.voteCount
-//                            )
-//                            dataMovieList.add(newDataMovie)
-//                        }
-//                        MovieRecyclerView
-//                        val adapter=MovieAdapter(dataMovieList)
-//                        MovieRecyclerView.adapter=adapter
-//
-//                    }
-//                } else {
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
-//    }
 }
