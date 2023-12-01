@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-android")
+    id("com.google.gms.google-services")
 
 }
 
@@ -47,6 +48,9 @@ dependencies {
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.borjabravo:readmoretextview:2.1.0")
+    implementation("com.google.firebase:firebase-firestore:24.9.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
     testImplementation("junit:junit:4.13.2")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -59,5 +63,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
 
     implementation ("com.squareup.picasso:picasso:2.8")
+
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+    implementation("com.google.firebase:firebase-auth")
 
 }
