@@ -3,10 +3,9 @@ package com.example.uts_android
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.uts_android.Adapter.GenreAdapter
 import com.example.uts_android.databinding.ActivityDetailMovieBinding
 import com.example.uts_android.model.Genre
 
@@ -56,7 +55,7 @@ class DetailMovies : AppCompatActivity() {
                             }
                         }
                     }
-                    val adapter=GenreAdapter(genreName)
+                    val adapter= GenreAdapter(genreName)
                     recyclerGenresFill.adapter=adapter
                 }
                 override fun onError(error: String) {

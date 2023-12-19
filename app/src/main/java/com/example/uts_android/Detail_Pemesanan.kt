@@ -3,8 +3,8 @@ package com.example.uts_android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
+
 import com.example.uts_android.databinding.ActivityDetailPemesananBinding
-import java.sql.Time
 
 class Detail_Pemesanan : AppCompatActivity() {
     private lateinit var binding: ActivityDetailPemesananBinding

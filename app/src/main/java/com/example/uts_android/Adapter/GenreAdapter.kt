@@ -1,11 +1,11 @@
-package com.example.uts_android
+package com.example.uts_android.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.uts_android.model.Genre
+import com.example.uts_android.R
 
 class GenreAdapter(private val genreList:ArrayList<String>):RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
     inner class ViewHolder(genreView: View):RecyclerView.ViewHolder(genreView){

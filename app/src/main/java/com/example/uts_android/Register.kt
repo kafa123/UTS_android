@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.uts_android.databinding.FragmentRegisterBinding
 import com.google.android.material.R
 import com.google.firebase.Firebase
@@ -116,10 +117,11 @@ class Register : Fragment() {
                     document->
                     if(document!=null && document.exists()){
                         val userData=document.data!!
-
+                        val sharePref=context?.getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE)
                         val role=userData["Role"]as String
+                        sharePref?.edit()?.putString("user",role)?.apply()
                         if (role == "Admin") {
-                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            val intent = Intent(requireContext(), AdminActivity::class.java)
                             startActivity(intent)
                         } else {
                             val intent = Intent(requireContext(), MainActivity::class.java)

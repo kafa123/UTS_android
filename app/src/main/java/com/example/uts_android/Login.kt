@@ -1,6 +1,7 @@
 package com.example.uts_android
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.uts_android.databinding.FragmentLoginBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -20,11 +22,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Login.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Login : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -76,10 +73,11 @@ class Login : Fragment() {
                         document->
                     if(document!=null && document.exists()){
                         val userData=document.data!!
-
+                        val sharePref=context?.getSharedPreferences("user",AppCompatActivity.MODE_PRIVATE)
                         val role=userData["Role"]as String
+                        sharePref?.edit()?.putString("user",role)?.apply()
                         if (role == "Admin") {
-                            val intent = Intent(requireContext(), MainActivity::class.java)
+                            val intent = Intent(requireContext(), AdminActivity::class.java)
                             startActivity(intent)
                         } else {
                             val intent = Intent(requireContext(), MainActivity::class.java)

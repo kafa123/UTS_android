@@ -1,8 +1,10 @@
-package com.example.uts_android
+package com.example.uts_android.Adapter
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.uts_android.AdminFragment
+import com.example.uts_android.MovieAdminFragment
 
 class AdminAdapter(ac: AppCompatActivity): FragmentStateAdapter(ac) {
     override fun getItemCount(): Int {
@@ -13,7 +15,7 @@ class AdminAdapter(ac: AppCompatActivity): FragmentStateAdapter(ac) {
         var fragment: Fragment?= null
         when (position) {
             0 -> fragment = AdminFragment()
-            1 -> fragment = HomeFragment()
+            1 -> fragment = MovieAdminFragment()
 
         }
         return fragment as Fragment

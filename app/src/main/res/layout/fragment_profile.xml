@@ -6,120 +6,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/paint_2"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="@color/blackSoft"
         android:backgroundTintMode="multiply"
-        android:padding="16dp">
-        <TextView
+        >
+        <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="16sp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textStyle="bold"
-            android:id="@+id/tvTitlePage"/>
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="horizontal"
+            android:id="@+id/guidline"/>
+
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:src="@drawable/kim"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/guidline"
+                />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="@id/guidline"
+            android:src="@drawable/profile_name"
+            android:alpha="50"/>
+            <TextView
+                android:id="@+id/name_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/guidline"
+                android:text="Nur Muhammad Kafabih"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
             android:id="@+id/logut"
             android:src="@drawable/baseline_logout_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
-        <androidx.cardview.widget.CardView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitlePage"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="150dp"
-            android:id="@+id/imageCardProfile"
-            >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/kim"
-                android:scaleType="centerCrop"
-                />
-        </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama"
-            android:textStyle="bold"
-            android:id="@+id/name"
-            app:layout_constraintTop_toBottomOf="@id/imageCardProfile"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="12dp"
-            android:textSize="14sp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kafabih"
-            android:id="@+id/nameProfile"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="12dp"
-            android:textSize="14sp"
-            /><TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Number"
-            android:textStyle="bold"
-            android:id="@+id/Number"
-            app:layout_constraintTop_toBottomOf="@id/nameProfile"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="12dp"
-            android:textSize="14sp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0890878090"
-            android:id="@+id/numberPorfile"
-            app:layout_constraintTop_toBottomOf="@id/Number"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="12dp"
-            android:textSize="14sp"
-            /><TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textStyle="bold"
-            android:id="@+id/email"
-            app:layout_constraintTop_toBottomOf="@id/numberPorfile"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="12dp"
-            android:textSize="14sp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="123Kafabih@gmail.com"
-            android:id="@+id/emailProfile"
-            app:layout_constraintTop_toBottomOf="@id/email"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="12dp"
-            android:textSize="14sp"
-            />
-
-
+            app:layout_constraintTop_toBottomOf="@id/guidline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/movie_card"
+            android:id="@+id/recycle_bookmarks"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

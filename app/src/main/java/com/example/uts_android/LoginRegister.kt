@@ -23,6 +23,19 @@ class LoginRegister : AppCompatActivity() {
         viewBinding = ActivityBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        val user=getSharedPreferences("user",AppCompatActivity.MODE_PRIVATE)
+        val role=user.getString("user",null)
+
+        if (role!=null){
+            if (role.equals("Admin") ) {
+                val intent = Intent(this, AdminActivity::class.java)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, UserActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
         with(viewBinding) {
             val sectionPager = LoginRegisterAdapater(this@LoginRegister)
             val viewPager: ViewPager2 = findViewById(R.id.Fragment)

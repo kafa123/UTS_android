@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.uts_android"
-    compileSdk = 33
+    compileSdk = 34
     buildFeatures {
         viewBinding=true
     }
@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId = "com.example.uts_android"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -51,6 +51,10 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.9.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     testImplementation("junit:junit:4.13.2")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

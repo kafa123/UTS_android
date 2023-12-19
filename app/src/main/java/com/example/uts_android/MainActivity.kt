@@ -3,18 +3,7 @@ package com.example.uts_android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import retrofit2.Callback
-import androidx.recyclerview.widget.RecyclerView
 import com.example.uts_android.databinding.ActivityMainBinding
-import com.example.uts_android.model.Genre
-import com.example.uts_android.model.GenreResponse
-import com.example.uts_android.model.DataMovie
-import com.example.uts_android.model.MovieResponse
-import com.example.uts_android.service.GenreApiInterface
-import com.example.uts_android.service.MovieApiInterface
-import com.example.uts_android.service.MovieApiService
-import retrofit2.Call
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 private lateinit var Binding: ActivityMainBinding

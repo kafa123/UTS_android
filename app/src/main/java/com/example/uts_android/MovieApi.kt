@@ -1,7 +1,6 @@
 package com.example.uts_android
 
 import com.example.uts_android.model.DataMovie
-import com.example.uts_android.model.Genre
 import com.example.uts_android.model.MovieResponse
 import com.example.uts_android.service.MovieApiInterface
 import com.example.uts_android.service.MovieApiService

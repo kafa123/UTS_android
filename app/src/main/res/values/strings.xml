@@ -2,6 +2,8 @@
     <string name="app_name">UTS_android</string>
     <string name="Register">Register</string>
     <string name="Login">Login</string>
+    <string name="Movie">Movie</string>
+    <string name="ADD">ADD</string>
     <array name="title">
         <item>Ballerina</item>
         <item>Doraemon Stand By Me 2</item>
@@ -119,4 +121,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

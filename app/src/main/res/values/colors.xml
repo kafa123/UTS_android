@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="blackSoft">#222831</color>
+    <color name="graySoft">#222831</color>
+    <color name="blueBlack">#00ADB5</color>
+    <color name="whiteDim">#EEEEEE</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#777777</color>
+    <color name="gray">#d4d4d4</color>
     <color name="primary">#B6FFFA</color>
     <color name="secondary">#98E4FF</color>
     <color name="third">#80B3FF</color>
