@@ -2,12 +2,16 @@
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.viewpager2.widget.ViewPager2
 import com.example.uts_android.Adapter.AdminAdapter
 import com.example.uts_android.databinding.ActivityAdminBinding
 import com.google.android.material.tabs.TabLayoutMediator
+
 
  class AdminActivity : AppCompatActivity() {
      companion object
@@ -25,10 +29,13 @@ private lateinit var binding: ActivityAdminBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-     binding = ActivityAdminBinding.inflate(layoutInflater)
+
+        binding = ActivityAdminBinding.inflate(layoutInflater)
      setContentView(binding.root)
+        viewpagers = binding.viewPager
+
         with(binding){
-            viewpagers = viewPager
+
             val SectionPager= AdminAdapter(this@AdminActivity)
             viewPager.adapter=SectionPager
             TabLayoutMediator(TabLayout,viewPager){
@@ -38,12 +45,14 @@ private lateinit var binding: ActivityAdminBinding
 
             logout.setOnClickListener {
                 val user=getSharedPreferences("user",AppCompatActivity.MODE_PRIVATE)
-                user.edit().remove("user").commit()
+                user.edit().remove("role").commit()
                 val intent=Intent(this@AdminActivity,LoginRegister::class.java)
                 startActivity(intent)
                 finish()
             }
             }
         }
-    }
+
+
+ }
 

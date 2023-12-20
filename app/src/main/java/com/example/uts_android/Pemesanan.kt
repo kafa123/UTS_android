@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TimePicker
+import com.example.uts_android.database.Movies
 import com.example.uts_android.databinding.ActivityPemesananBinding
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -46,8 +47,7 @@ class Pemesanan : AppCompatActivity() {
         binding= ActivityPemesananBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val title=intent.getStringExtra("Title")
-        val image = intent.getIntExtra("Image",0)
+        val movies=intent.getSerializableExtra("Movies") as Movies
         datePickers=findViewById(R.id.DatePicker)
         timePicker=findViewById(R.id.TimePicker)
         BioskopLocation=resources.getStringArray(R.array.Bioskop)
@@ -153,33 +153,10 @@ class Pemesanan : AppCompatActivity() {
             }
 
 
-//            menjalankan fungsi untuk menghitung harga
-//            Payment(spinnerSeat.selectedItem.toString(),numberOfSeat.text.toString().toInt())
-
-//            val fee = when (spinnerSeat.selectedItem.toString()) {
-//                "Reguler" -> 35000
-//                "Premium" -> 50000
-//                "VIP" -> 75000
-//                "VVIP"->100000
-//                else -> {
-//                    0
-//                }
-//            }
-//
-//            TotalPayment=if (numberOfSeat.text.toString().isNotEmpty()){
-//                fee*numberOfSeat.text.toString().toInt()
-//            }else{
-//                fee
-//            }
-//
-//            seatCost.text=fee.toString()
-//            tvJumlahKursi.text=numberOfSeat.editableText
-//            totalPayment.text=TotalPayment.toString()
 
             btnPemesanan.setOnClickListener {
                 val intent= Intent(this@Pemesanan,Detail_Pemesanan::class.java)
-                intent.putExtra("Title",title)
-                intent.putExtra("Image",image)
+                intent.putExtra("Movies",movies)
                 intent.putExtra(EXTRA_BIOSKOP,spinnerBioskop.selectedItem.toString())
                 intent.putExtra(EXTRA_DATE,DatePicker.text.toString())
                 intent.putExtra(EXTRA_TIME,TimePicker.text.toString())

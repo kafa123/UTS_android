@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="@color/blackSoft"
+    android:background="@drawable/item_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     
     <androidx.cardview.widget.CardView
@@ -45,6 +45,15 @@
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/title_movie"
         />
+    <ImageView
+        android:id="@+id/add_bookmarks"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/outline_bookmark_add_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="12dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

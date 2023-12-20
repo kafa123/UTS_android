@@ -93,6 +93,7 @@ class Register : Fragment() {
                                     }
                             }
                             updateUI(user)
+                            makeBookmark(user)
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -119,7 +120,8 @@ class Register : Fragment() {
                         val userData=document.data!!
                         val sharePref=context?.getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE)
                         val role=userData["Role"]as String
-                        sharePref?.edit()?.putString("user",role)?.apply()
+                        sharePref?.edit()?.putString("role",role)?.apply()
+                        sharePref?.edit()?.putString("uid",user.uid)?.apply()
                         if (role == "Admin") {
                             val intent = Intent(requireContext(), AdminActivity::class.java)
                             startActivity(intent)
@@ -130,6 +132,14 @@ class Register : Fragment() {
                     }
                 }
         }
+    }
+    private fun makeBookmark(user:FirebaseUser?){
+        val emptyList= arrayListOf<String>()
+        val Data= hashMapOf<String,Any>()
+        Data["titleList"]=emptyList
+        firebase.collection("Bookmarks").document(user!!.uid).set(
+            Data
+        )
     }
     companion object {
         /**

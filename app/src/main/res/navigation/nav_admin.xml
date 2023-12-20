@@ -19,6 +19,12 @@
         tools:layout="@layout/fragment_item_list" >
         <action
             android:id="@+id/action_movieAdminFragment_to_admin_crud"
-            app:destination="@id/admin_crud" />
+            app:destination="@id/admin_crud"
+            />
+        <argument
+            android:name="movieArg"
+            app:argType="com.example.uts_android.database.Movies"
+            app:nullable="true"
+            android:defaultValue="@null"/>
     </fragment>
 </navigation>

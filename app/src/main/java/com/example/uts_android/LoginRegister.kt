@@ -24,14 +24,14 @@ class LoginRegister : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         val user=getSharedPreferences("user",AppCompatActivity.MODE_PRIVATE)
-        val role=user.getString("user",null)
+        val role=user.getString("role",null)
 
         if (role!=null){
             if (role.equals("Admin") ) {
                 val intent = Intent(this, AdminActivity::class.java)
                 startActivity(intent)
             } else {
-                val intent = Intent(this, UserActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
         }

@@ -14,8 +14,7 @@ private lateinit var Binding: ActivityMainBinding
         Binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(Binding.root)
 
-
-
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         with(Binding){
             ReplaceFragment(HomeFragment())

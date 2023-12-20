@@ -1,14 +1,21 @@
 package com.example.uts_android
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.viewpager.widget.ViewPager
 import com.example.uts_android.Adapter.onClickAdmin
+import com.example.uts_android.database.Movies
 import com.example.uts_android.databinding.FragmentItemListBinding
+import com.example.uts_android.model.AdminViewModel
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -25,6 +32,7 @@ class MovieAdminFragment : Fragment(),onClickAdmin{
     private val movieList:MutableLiveData<List<Movies>> by lazy {
         MutableLiveData<List<Movies>>()
     }
+    private lateinit var adminViewModel: AdminViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,9 +51,7 @@ class MovieAdminFragment : Fragment(),onClickAdmin{
         binding= FragmentItemListBinding.inflate(layoutInflater,container,false)
         firebaseFirestore= FirebaseFirestore.getInstance()
         firebaseStorage= FirebaseStorage.getInstance()
-
-
-
+        adminViewModel=ViewModelProvider(requireActivity()).get(AdminViewModel::class.java)
         with(binding){
 
         }
@@ -59,7 +65,6 @@ class MovieAdminFragment : Fragment(),onClickAdmin{
     }
     private fun observeMovie(){
         movieList.observe(requireActivity()){ movies ->
-            // Setel data ke RecyclerView Adapter
             val adapter = MyMovieAdminRecyclerViewAdapter(movies,this)
             binding.list.adapter = adapter
         }
@@ -92,13 +97,9 @@ class MovieAdminFragment : Fragment(),onClickAdmin{
     }
 
     override fun onEditClick(movie: Movies) {
-        val bundle=Bundle()
-        bundle.putSerializable("Movie",movie)
-
-        AdminFragment().arguments=bundle
-
-        AdminActivity.viewpagers.currentItem=0
-//        AdminFragment().setData(movie)
+        adminViewModel.setSelectedMovie(movie)
+        val viewPager=AdminActivity.viewpagers
+        viewPager.currentItem=0
     }
 
     override fun onDeleteClick(movie: Movies) {

@@ -9,7 +9,7 @@
     android:orientation="horizontal">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@color/blackSoft"
         android:padding="12dp"
         android:layout_height="wrap_content">
     <ImageView

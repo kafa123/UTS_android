@@ -3,6 +3,7 @@ package com.example.uts_android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
+import com.example.uts_android.database.Movies
 
 import com.example.uts_android.databinding.ActivityDetailPemesananBinding
 
@@ -13,8 +14,7 @@ class Detail_Pemesanan : AppCompatActivity() {
         binding=ActivityDetailPemesananBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val title=intent.getStringExtra("Title")
-        val image=intent.getIntExtra("Image",0)
+        val movie=intent.getSerializableExtra("Movies") as Movies
         val Date=intent.getStringExtra(Pemesanan.EXTRA_DATE)
         val Time=intent.getStringExtra(Pemesanan.EXTRA_TIME)
         val Seat=intent.getStringExtra(Pemesanan.EXTRA_SEAT)
@@ -33,7 +33,7 @@ class Detail_Pemesanan : AppCompatActivity() {
             numberOfSeat.text=NumberOfSeat
             totalPayment.text=TotalPayment
             paymentMethod.text=PaymentMethod
-            Glide.with(this@Detail_Pemesanan).load(image).into(imageMovie)
+            Glide.with(this@Detail_Pemesanan).load(movie.image).centerCrop().into(imageMovie)
         }
     }
 }

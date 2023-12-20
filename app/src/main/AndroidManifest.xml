@@ -11,14 +11,15 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/kim"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic"
         android:supportsRtl="true"
         android:theme="@style/Theme.UTS_android"
         tools:targetApi="31">
         <activity
             android:name=".UserActivity"
             android:exported="false"
-            android:label="@string/title_activity_user" />
+            android:label="@string/title_activity_user"
+            android:theme="@style/Theme.UTS_android"/>
         <activity
             android:name=".AdminActivity"
             android:exported="false"
@@ -39,13 +40,13 @@
             android:windowSoftInputMode="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.UTS_android" />
     </application>
 
 </manifest>

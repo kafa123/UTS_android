@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.uts_android.Adapter.onClickAdmin
+import com.example.uts_android.database.Movies
 
 import com.example.uts_android.databinding.FragmentItemBinding
 

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uts_android.R
 
-class GenreAdapter(private val genreList:ArrayList<String>):RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
+class GenreAdapter(private val genreList:List<String>):RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
     inner class ViewHolder(genreView: View):RecyclerView.ViewHolder(genreView){
         val genreTextView:TextView=genreView.findViewById(R.id.tv_genre)
     }

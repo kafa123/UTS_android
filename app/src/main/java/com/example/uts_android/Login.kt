@@ -58,6 +58,7 @@ class Login : Fragment() {
                         if (task.isSuccessful) {
                             val user = auth.currentUser
                             updateUI(user)
+
                         }else{
                             Toast.makeText(requireContext(),"eror",Toast.LENGTH_LONG).show()
                         }
@@ -75,7 +76,8 @@ class Login : Fragment() {
                         val userData=document.data!!
                         val sharePref=context?.getSharedPreferences("user",AppCompatActivity.MODE_PRIVATE)
                         val role=userData["Role"]as String
-                        sharePref?.edit()?.putString("user",role)?.apply()
+                        sharePref?.edit()?.putString("role",role)?.apply()
+                        sharePref?.edit()?.putString("uid",user.uid)?.apply()
                         if (role == "Admin") {
                             val intent = Intent(requireContext(), AdminActivity::class.java)
                             startActivity(intent)
@@ -87,6 +89,7 @@ class Login : Fragment() {
                 }
         }
     }
+
 
     companion object {
         /**

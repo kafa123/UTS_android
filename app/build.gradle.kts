@@ -3,7 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-android")
     id("com.google.gms.google-services")
-
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -61,6 +63,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -71,4 +74,13 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     implementation("com.google.firebase:firebase-auth")
 
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation ("com.google.devtools.ksp:symbol-processing-api:1.9.20-1.0.14")
+
+    ksp("androidx.room:room-compiler:2.5.2")
+
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0-alpha13")
+    // To use constraintlayout in compose
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha13")
 }
