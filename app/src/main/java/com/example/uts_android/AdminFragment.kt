@@ -160,11 +160,15 @@ class AdminFragment : Fragment() {
                         popularity = 0
                     )
                     uploadData(data)
+                    binding.progressHorizontal.visibility=View.GONE
                 }
             }.addOnFailureListener { exception ->
+                binding.progressHorizontal.visibility=View.GONE
                 Log.e("UploadFailure", "Upload failed: $exception")
             }.addOnProgressListener { taskSnapshot ->
-                val progress = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount)
+                val progress = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount).toInt()
+                binding.progressHorizontal.progress=progress
+                binding.progressHorizontal.visibility=View.VISIBLE
                 Toast.makeText(requireContext(), progress.toString(), Toast.LENGTH_SHORT).show()
             }
         }
@@ -182,7 +186,7 @@ class AdminFragment : Fragment() {
                 .set(movie)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Upload successful", Toast.LENGTH_SHORT).show()
-                    // Move to another page or perform any action upon successful upload
+
                     AdminActivity.viewpagers.currentItem = 1
                     clear()
                 }

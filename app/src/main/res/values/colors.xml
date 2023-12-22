@@ -12,4 +12,6 @@
     <color name="third">#80B3FF</color>
     <color name="fourth">#687EFF</color>
     <color name="cream">#FFF6F6</color>
+    <color name="your_ripple_color">#FF4081</color> <!-- Replace with your desired color -->
+
 </resources>

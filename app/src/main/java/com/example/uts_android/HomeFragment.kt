@@ -1,6 +1,7 @@
 package com.example.uts_android
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -23,6 +24,8 @@ import com.example.uts_android.database.MoviesDatabase
 import com.example.uts_android.databinding.FragmentHomeBinding
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.toObject
 import com.google.firebase.storage.FirebaseStorage
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -65,6 +68,7 @@ class HomeFragment : Fragment(),UserOnClick
     private val movieList: MutableLiveData<List<Movies>> by lazy {
         MutableLiveData<List<Movies>>()
     }
+    private lateinit var TopMovieList:ArrayList<Movies>
     private lateinit var uid:String
     private lateinit var MovieDao: MoviesDao
     private lateinit var executorService: ExecutorService
@@ -89,27 +93,11 @@ class HomeFragment : Fragment(),UserOnClick
         val db= MoviesDatabase.getDatabase(requireContext())
         MovieDao=db!!.moviesDao()!!
         getTitleList(uid)
+        TopMovieList= arrayListOf()
+//        observeTopMovies()
+        observeMovie()
+        observeMoviesChanges()
 
-        binding.carousel.setAdapter(object : Carousel.Adapter {
-            override fun count(): Int {
-
-                return 5
-            }
-
-            override fun populate(view: View, index: Int) {
-                when (index) {
-                    0 -> Glide.with(view).load(R.drawable.kim).centerCrop().into(view as ImageView)
-                    1 -> Glide.with(view).load(R.drawable.ballerina_1).centerCrop().into(view as ImageView)
-                    2 -> Glide.with(view).load(R.drawable.doraemon_stand).centerCrop().into(view as ImageView)
-                    3 -> Glide.with(view).load(R.drawable.one_piece).centerCrop().into(view as ImageView)
-                    4 -> Glide.with(view).load(R.drawable.one_piece_z).centerCrop().into(view as ImageView)
-                }
-            }
-
-            override fun onNewItem(index: Int) {
-                // Called when an item is set
-            }
-        })
 
 
         return binding.root
@@ -123,17 +111,33 @@ class HomeFragment : Fragment(),UserOnClick
     private fun observeMovie(){
         movieList.observe(requireActivity()){ movies ->
             val adapter=MovieAdapter(movies,this,titleList){
-                val intent= Intent(context,DetailMovies::class.java)
+                val intent= Intent(requireContext(),DetailMovies::class.java)
                 intent.putExtra("Movies",it)
+                Log.e("movie",it.genres.toString())
                 startActivity(intent)
             }
+
+            binding.carousel.setAdapter(object : Carousel.Adapter {
+                override fun count(): Int {
+
+                    return movies.size
+                }
+
+                override fun populate(view: View, index: Int) {
+                    Glide.with(requireContext()).load(movies[index].image).centerCrop().into(view as ImageView)
+                }
+
+                override fun onNewItem(index: Int) {
+                    // Called when an item is set
+                }
+            })
             binding.topMoviesRecyclerView.adapter=adapter
 
             binding.topMoviesRecyclerView.addItemDecoration(DividerItemDecoration(binding.topMoviesRecyclerView.context,
                 LinearLayoutManager.VERTICAL))
         }
-
     }
+
 
     private fun observeMoviesChanges() {
         firestore.collection("movies").addSnapshotListener{ snapshots, error ->
@@ -148,28 +152,22 @@ class HomeFragment : Fragment(),UserOnClick
             }
         }
     }
+    private fun observeTopMovies() {
+        TopMovieList.clear()
+        firestore.collection("movies").orderBy("popularity",Query.Direction.DESCENDING).limit(5).get()
+            .addOnSuccessListener {
+                for (doc in it){
+                    val movie=doc.toObject<Movies>()
+                    TopMovieList.add(movie)
+                }
+            }
+    }
 
 
 
-    override fun addBookmark(movies: Movies) {
-        if (titleList.contains(movies.title)){
-            titleList.remove(movies.title)
-            val data= hashMapOf<String,Any>(
-                "titleList" to titleList
-            )
-            firestore.collection("Bookmarks").document(uid).set(data)
-            firestore.collection("movies").document(movies.title).update("popularity",movies.popularity-1)
-            delete(movies)
-            getTitleList(uid)
-        }else{
-        titleList.add(movies.title)
-        val data= hashMapOf<String,Any>(
-            "titleList" to titleList
-        )
-        firestore.collection("Bookmarks").document(uid).set(data)
-        firestore.collection("movies").document(movies.title).update("popularity",movies.popularity+1)
-            insert(movies)
-        getTitleList(uid)}
+
+    override fun Bookmark(movie: Movies) {
+        insertToDatabase(movie)
     }
     private fun getTitleList(uid:String){
         firestore.collection("Bookmarks").document(uid).get().addOnSuccessListener { documentSnapshot ->
@@ -193,4 +191,44 @@ class HomeFragment : Fragment(),UserOnClick
         executorService.execute{MovieDao.delete(movies)}
     }
 
+    private fun downloadImageBytesAndUpdate(movie: Movies) {
+        val storageRef = firebaseStorage.reference.child("images/${movie.title}")
+        val ONE_MEGABYTE: Long = 1024 * 1024 // Adjust as needed
+        storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+            // Convert the downloaded bytes to a Bitmap or any other form as needed
+            val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+            val movieDatabase=Movies(
+                movie.title,
+                movie.director,
+                movie.genres,
+                movie.description,
+                bitmap.toString(),
+                movie.popularity
+            )
+            insertToDatabase(movieDatabase)
+        }.addOnFailureListener { exception ->
+            // Handle any errors that may occur during the download
+            Log.e("DownloadImageBytes", "Error downloading image: $exception")
+        }
+    }
+    private fun insertToDatabase(movies: Movies){
+        if (titleList.contains(movies.title)){
+            titleList.remove(movies.title)
+            val data= hashMapOf<String,Any>(
+                "titleList" to titleList
+            )
+            firestore.collection("Bookmarks").document(uid).set(data)
+            firestore.collection("movies").document(movies.title).update("popularity",movies.popularity-1)
+            delete(movies)
+            getTitleList(uid)
+        }else{
+            titleList.add(movies.title)
+            val data= hashMapOf<String,Any>(
+                "titleList" to titleList
+            )
+            firestore.collection("Bookmarks").document(uid).set(data)
+            firestore.collection("movies").document(movies.title).update("popularity",movies.popularity+1)
+            insert(movies)
+            getTitleList(uid)}
+    }
 }

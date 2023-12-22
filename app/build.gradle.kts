@@ -45,14 +45,14 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.borjabravo:readmoretextview:2.1.0")
-    implementation("com.google.firebase:firebase-firestore:24.9.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation("com.google.firebase:firebase-firestore:24.10.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
@@ -75,12 +75,12 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-runtime:2.6.1")
     implementation ("com.google.devtools.ksp:symbol-processing-api:1.9.20-1.0.14")
 
-    ksp("androidx.room:room-compiler:2.5.2")
+    ksp("androidx.room:room-compiler:2.6.1")
 
     implementation("androidx.constraintlayout:constraintlayout:2.2.0-alpha13")
-    // To use constraintlayout in compose
+
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha13")
 }

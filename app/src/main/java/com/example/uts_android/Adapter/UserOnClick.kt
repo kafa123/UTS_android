@@ -4,5 +4,5 @@ import com.example.uts_android.database.Movies
 import com.google.firebase.auth.FirebaseAuth
 
 interface UserOnClick {
-    fun addBookmark(movies: Movies)
+    fun Bookmark(movies: Movies)
 }

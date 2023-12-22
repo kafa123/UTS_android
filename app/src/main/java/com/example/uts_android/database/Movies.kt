@@ -3,8 +3,7 @@ package com.example.uts_android.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
-import androidx.room.TypeConverters
+
 import java.io.Serializable
 @Entity(tableName = "MovieDB")
 data class Movies(

@@ -2,6 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.UTS_android" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:colorControlHighlight">@color/your_ripple_color</item>
+        <item name="colorPrimary">@color/graySoft</item>
 
     </style>
 

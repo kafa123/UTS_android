@@ -19,7 +19,7 @@ abstract class MoviesDatabase : RoomDatabase() {
                 synchronized(MoviesDatabase::class.java) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        MoviesDatabase::class.java, "note_database"
+                        MoviesDatabase::class.java, "movie_database"
                     )
                         .build()
                 }

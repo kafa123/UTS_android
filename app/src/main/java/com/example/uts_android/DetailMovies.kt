@@ -23,15 +23,8 @@ class DetailMovies : AppCompatActivity() {
         setContentView(binding.root)
         genre= listOf<String>()
 
-
-
         val movies=intent.getSerializableExtra("Movies") as Movies
         genre= movies.genres
-
-
-
-
-
 
         with(binding){
             titleMovie.text = movies.title
@@ -50,6 +43,4 @@ class DetailMovies : AppCompatActivity() {
             }
         }
     }
-
-
 }

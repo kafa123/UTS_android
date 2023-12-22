@@ -1,8 +1,12 @@
 package com.example.uts_android
 
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.constraintlayout.compose.Transition
+import androidx.transition.TransitionManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.uts_android.databinding.ActivityBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -25,11 +29,12 @@ class LoginRegister : AppCompatActivity() {
 
         val user=getSharedPreferences("user",AppCompatActivity.MODE_PRIVATE)
         val role=user.getString("role",null)
-
-        if (role!=null){
+        Log.e("error Role",role.toString())
+        if (role !=null){
             if (role.equals("Admin") ) {
                 val intent = Intent(this, AdminActivity::class.java)
                 startActivity(intent)
+
             } else {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.bumptech.glide.Glide
 import com.example.uts_android.Adapter.onClickAdmin
 import com.example.uts_android.database.Movies
@@ -63,5 +64,27 @@ class MyMovieAdminRecyclerViewAdapter(
             }
         }
     }
+    fun enableSwipeToDelete(recyclerView: RecyclerView) {
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+
+                onClickAdmin.onDeleteClick(values[position])
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
 
 }

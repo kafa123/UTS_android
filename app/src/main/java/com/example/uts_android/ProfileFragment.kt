@@ -14,6 +14,7 @@ import com.example.uts_android.database.Movies
 import com.example.uts_android.database.MoviesDao
 import com.example.uts_android.database.MoviesDatabase
 import com.example.uts_android.databinding.FragmentProfileBinding
+import com.google.firebase.auth.FirebaseAuth
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -33,6 +34,7 @@ class ProfileFragment : Fragment(),UserOnClick {
     private var param2: String? = null
     private lateinit var binding: FragmentProfileBinding
     private lateinit var MovieDao:MoviesDao
+    private lateinit var auth:FirebaseAuth
     private lateinit var executorService: ExecutorService
     private lateinit var titleList: ArrayList<String>
 
@@ -55,13 +57,15 @@ class ProfileFragment : Fragment(),UserOnClick {
         MovieDao=db!!.moviesDao()!!
         val view=binding.root
         titleList= HomeFragment.titleList
+        auth= FirebaseAuth.getInstance()
 
         with(binding){
             logut.setOnClickListener {
                 val user=context?.getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE)
-                user?.edit()?.remove("role")?.commit()
+                user?.edit()?.remove("role")?.apply()
                 val intent=Intent(requireActivity(),LoginRegister::class.java)
                 startActivity(intent)
+                auth.signOut()
                 activity?.finish()
             }
 
@@ -105,7 +109,11 @@ class ProfileFragment : Fragment(),UserOnClick {
         }
     }
 
-    override fun addBookmark(movies: Movies) {
-        val a=0
+    override fun Bookmark(movies: Movies) {
+        delete(movies)
     }
+    private fun delete(movies: Movies){
+        executorService.execute{MovieDao.delete(movies)}
+    }
+
 }

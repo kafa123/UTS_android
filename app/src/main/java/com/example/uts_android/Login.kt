@@ -1,7 +1,13 @@
 package com.example.uts_android
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +16,8 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.example.uts_android.databinding.FragmentLoginBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -23,12 +31,12 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class Login : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var auth:FirebaseAuth
     private lateinit var firebase:FirebaseFirestore
     private lateinit var binding:FragmentLoginBinding
+    private val channel="login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +68,7 @@ class Login : Fragment() {
                             updateUI(user)
 
                         }else{
-                            Toast.makeText(requireContext(),"eror",Toast.LENGTH_LONG).show()
+                            binding.textPassword.error="please check your username and password again"
                         }
                     }
             }
@@ -78,11 +86,14 @@ class Login : Fragment() {
                         val role=userData["Role"]as String
                         sharePref?.edit()?.putString("role",role)?.apply()
                         sharePref?.edit()?.putString("uid",user.uid)?.apply()
+//                        createNotificationChannel()
                         if (role == "Admin") {
                             val intent = Intent(requireContext(), AdminActivity::class.java)
+                            Toast.makeText(requireContext(), "Berhasil Login sebagai admin", Toast.LENGTH_SHORT).show()
                             startActivity(intent)
                         } else {
                             val intent = Intent(requireContext(), MainActivity::class.java)
+                            Toast.makeText(requireContext(), "Berhasil Login sebagai user", Toast.LENGTH_SHORT).show()
                             startActivity(intent)
                         }
                     }
@@ -109,5 +120,32 @@ class Login : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    fun createNotificationChannel() {
+        val builder = NotificationCompat.Builder(requireContext(), channel)
+            .setContentTitle("LOGIN")
+            .setSmallIcon(R.drawable.baseline_person_2_24)
+            .setContentText("anda telah berhasil login")
+            .setAutoCancel(true)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        val notifManager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as
+                NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notifChannel = NotificationChannel(
+                channel,
+                "Login",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+
+            with(notifManager) {
+                createNotificationChannel(notifChannel)
+                notify(0, builder.build())
+            }
+        }
+        else {
+            notifManager.notify(0, builder.build())
+        }
     }
 }

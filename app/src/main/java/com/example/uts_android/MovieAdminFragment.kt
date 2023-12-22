@@ -67,6 +67,7 @@ class MovieAdminFragment : Fragment(),onClickAdmin{
         movieList.observe(requireActivity()){ movies ->
             val adapter = MyMovieAdminRecyclerViewAdapter(movies,this)
             binding.list.adapter = adapter
+            adapter.enableSwipeToDelete(binding.list)
         }
     }
 

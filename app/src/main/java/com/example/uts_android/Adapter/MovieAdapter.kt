@@ -38,7 +38,7 @@ class MovieAdapter (private var MovieList:List<Movies>,private val userOnClick: 
                     OnClickMovie(data)
                 }
                 addBookmarks.setOnClickListener {
-                    userOnClick.addBookmark(data)
+                    userOnClick.Bookmark(data)
                 }
                 if (titleList.contains(data.title)){
                     addBookmarks.setImageResource(R.drawable.baseline_bookmark_add_24)

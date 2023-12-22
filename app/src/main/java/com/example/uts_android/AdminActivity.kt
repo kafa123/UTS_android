@@ -11,9 +11,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.uts_android.Adapter.AdminAdapter
 import com.example.uts_android.databinding.ActivityAdminBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 
 
  class AdminActivity : AppCompatActivity() {
+     private lateinit var auth:FirebaseAuth
      companion object
      {
          private val ADMIN_TAB= intArrayOf(
@@ -33,6 +35,7 @@ private lateinit var binding: ActivityAdminBinding
         binding = ActivityAdminBinding.inflate(layoutInflater)
      setContentView(binding.root)
         viewpagers = binding.viewPager
+        auth= FirebaseAuth.getInstance()
 
         with(binding){
 
@@ -48,6 +51,7 @@ private lateinit var binding: ActivityAdminBinding
                 user.edit().remove("role").commit()
                 val intent=Intent(this@AdminActivity,LoginRegister::class.java)
                 startActivity(intent)
+                auth.signOut()
                 finish()
             }
             }
